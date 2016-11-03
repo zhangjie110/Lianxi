@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private ListView lv;
     private GridView gv;
     private MyGridAdapter adapter;
-    private List<String> list=new ArrayList<>();
-    private List<String> data=new ArrayList<>();
+    private List<String> list = new ArrayList<>();
+    private List<String> data = new ArrayList<>();
     private MyListAdapter adapter1;
 
     @Override
@@ -27,27 +27,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //初始化数据
         initView();
 
     }
 
     private void initView() {
-        sv=(ScrollView) findViewById(R.id.sv);
-        lv=(ListView)findViewById(R.id.lv);
-        gv=(GridView)findViewById(R.id.gv);
-        sv.smoothScrollTo(0,0);
+        //找到控件
+        sv = (ScrollView) findViewById(R.id.sv);
+        lv = (ListView) findViewById(R.id.lv);
+        gv = (GridView) findViewById(R.id.gv);
+        //显示scrollview
+        sv.smoothScrollTo(0, 0);
 
-        for (int i=0;i<16;i++){
-            list.add("作家协会"+i);
-        }
-        for (int j=0;j<10;j++){
-            data.add("第"+j+"届甘肃黄河文学奖获奖名单");
+        //给gridview添加数据
+        for (int i = 0; i < 16; i++) {
+            list.add("作家协会" + i);
         }
 
-        adapter=new MyGridAdapter(this,list);
+        //给listview添加数据
+        for (int j = 0; j < 10; j++) {
+            data.add("第" + j + "届甘肃黄河文学奖获奖名单");
+        }
+
+        //适配器
+        adapter = new MyGridAdapter(this, list);
         gv.setAdapter(adapter);
-
-        adapter1=new MyListAdapter(data,this);
+        //适配器
+        adapter1 = new MyListAdapter(data, this);
         lv.setAdapter(adapter1);
     }
 }
